@@ -2,7 +2,7 @@ import "./SearchBar.css";
 
 function SearchBar() {
   return (
-    <div className="d-flex justify-content-center px-5">
+    <div className="container-search d-flex justify-content-center px-5">
       <div className="search">
         <input
           type="text"
