@@ -11,7 +11,14 @@ function Catalog() {
     <div className="grid bg-primary row catalog">
       {
           products.map((product, i) => (
-              <ProductCard key={i} nombre={product.title}></ProductCard>
+              <ProductCard key={product.id} 
+              nombre={product.title}
+              precio={product.price}
+              moneda={product.currency_id}
+              condicion={product.condition}
+              stock={product.available_quantity}
+              imgSrc={product.thumbnail}
+              ></ProductCard>
           ))
       }
     </div>
