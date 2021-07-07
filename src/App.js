@@ -1,14 +1,17 @@
-import './App.css';
-import SearchBar from './components/SearchBar'
-import Catalog from './components/Catalog'
+import "./App.css";
+import SearchBar from "./components/SearchBar";
+import Catalog from "./components/Catalog";
+import { ProductState } from "./context/Product/ProductState";
 
 function App() {
   return (
-    <div className="container bg-dark vh-100">
+    <ProductState>
+      <div className="container bg-dark vh-100">
         <SearchBar></SearchBar>
 
         <Catalog></Catalog>
-    </div>
+      </div>
+    </ProductState>
   );
 }
 
