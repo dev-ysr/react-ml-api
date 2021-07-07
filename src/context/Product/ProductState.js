@@ -56,6 +56,7 @@ export const ProductState = (props) => {
         products: state.products,
         getProductsByTerm,
         orderProductsBy,
+        conditions: state.condition
       }}
     >
       {props.children}
