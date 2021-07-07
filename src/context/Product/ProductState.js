@@ -6,7 +6,7 @@ import axios from "axios";
 export const ProductState = (props) => {
   const initialState = {
     products: [],
-    conditions : [],
+    conditions: [],
   };
 
   const [state, dispatch] = useReducer(ProductReducer, initialState);
@@ -15,18 +15,23 @@ export const ProductState = (props) => {
     const res = await axios.get(
       "http://localhost:4000/api/search?query=" + term
     );
+
+    let conditions = res.data
+      .map((item) => item.condition)
+      .filter((value, index, self) => self.indexOf(value) === index);
+    conditions.push("renewed");
+
     dispatch({
       type: "GET_PRODUCTS_BY_TERM",
-      payload: res.data,
+      payload: {
+        products : res.data,
+        conditions : conditions
+      },
+      
     });
 
-    state.conditions = res.data.map(item => item.condition)
-    .filter((value, index, self) => self.indexOf(value) === index);
-    state.conditions.push('renewed');
-
     // console.log(res.data);
-    console.log(state.conditions);
-
+    console.log(conditions);
   };
 
   const orderProductsBy = (order) => {
@@ -47,7 +52,6 @@ export const ProductState = (props) => {
       type: "ORDER_PRODUCTS_BY",
       payload: state.products,
     });
-
   };
 
   return (
@@ -56,7 +60,7 @@ export const ProductState = (props) => {
         products: state.products,
         getProductsByTerm,
         orderProductsBy,
-        conditions: state.condition
+        conditions: state.conditions,
       }}
     >
       {props.children}

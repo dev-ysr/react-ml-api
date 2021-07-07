@@ -1,10 +1,10 @@
 import "./Catalog.css";
 import ProductCard from "./ProductCard";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ProductContext from "../context/Product/ProductContext";
 
 function Catalog() {
-  const { products, orderProductsBy } = useContext(ProductContext);
+  const { products, orderProductsBy, conditions } = useContext(ProductContext);
 
   const orderBy = (order) => {
     orderProductsBy(order);
@@ -42,8 +42,11 @@ function Catalog() {
           Filtrar por condición
         </button>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <button onClick={() => orderBy("asc")} className="dropdown-item">Precio ascendente</button>
-          <button onClick={() => orderBy("des")} className="dropdown-item">Precio descendente</button>
+
+         {conditions.map(condition => (
+          <button onClick={() => orderBy("asc")} className="dropdown-item">{condition}</button>
+         ))}
+          
         </div>
       </div>
 
