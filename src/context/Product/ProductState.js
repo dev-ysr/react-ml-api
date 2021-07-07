@@ -6,6 +6,7 @@ import axios from "axios";
 export const ProductState = (props) => {
   const initialState = {
     products: [],
+    filteredProducts : [],
     conditions: [],
   };
 
@@ -54,6 +55,20 @@ export const ProductState = (props) => {
     });
   };
 
+  const filterProductsByCondition = (condition) => {
+    
+    let filteredProducts = state.products.filter(product => {
+      return product.condition === condition;
+    })
+
+    console.log(filteredProducts);
+
+    dispatch({
+      type: "FILTER_PRODUCTS_BY_CONDITION",
+      payload: filteredProducts,
+    });
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -61,6 +76,8 @@ export const ProductState = (props) => {
         getProductsByTerm,
         orderProductsBy,
         conditions: state.conditions,
+        filterProductsByCondition,
+        filteredProducts: state.filteredProducts,
       }}
     >
       {props.children}

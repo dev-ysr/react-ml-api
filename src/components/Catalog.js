@@ -4,12 +4,17 @@ import { useContext } from "react";
 import ProductContext from "../context/Product/ProductContext";
 
 function Catalog() {
-  const { products, orderProductsBy, conditions } = useContext(ProductContext);
+  const { products, orderProductsBy, conditions, filterProductsByCondition, filteredProducts } = useContext(ProductContext);
 
   const orderBy = (order) => {
     orderProductsBy(order);
-    
   };
+
+  const filterByCondition = (condition) => {
+    // console.log('filterProductsByCondition');
+    // console.log(condition);
+    filterProductsByCondition(condition);
+  }
 
   return (
     <div className="grid bg-primary row catalog">
@@ -44,13 +49,13 @@ function Catalog() {
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
          {conditions.map(condition => (
-          <button onClick={() => orderBy("asc")} className="dropdown-item">{condition}</button>
+          <button onClick={() => filterByCondition(condition)} className="dropdown-item">{condition}</button>
          ))}
           
         </div>
       </div>
 
-      {products.map((product, i) => (
+      {filteredProducts.map((product, i) => (
         <ProductCard
           key={product.id}
           nombre={product.title}

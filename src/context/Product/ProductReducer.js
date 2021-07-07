@@ -1,4 +1,4 @@
-import {GET_PRODUCTS_BY_TERM} from '../types'
+import {FILTER_PRODUCTS_BY_CONDITION, GET_PRODUCTS_BY_TERM} from '../types'
 import {ORDER_PRODUCTS_BY} from '../types'
 
 export default (state, action) => {
@@ -11,12 +11,18 @@ export default (state, action) => {
             return {
                 ...state,
                 products: payload.products,
+                filteredProducts: [...payload.products],
                 conditions: payload.conditions
             }
         case ORDER_PRODUCTS_BY:
             return{
                 ...state,
-                products: payload
+                filteredProducts: payload
+            }
+        case FILTER_PRODUCTS_BY_CONDITION:
+            return {
+                ...state,
+                filteredProducts: payload
             }
     }
 }
