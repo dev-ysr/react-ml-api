@@ -6,6 +6,7 @@ import axios from "axios";
 export const ProductState = (props) => {
   const initialState = {
     products: [],
+    conditions : [],
   };
 
   const [state, dispatch] = useReducer(ProductReducer, initialState);
@@ -19,7 +20,13 @@ export const ProductState = (props) => {
       payload: res.data,
     });
 
-    console.log(res.data);
+    state.conditions = res.data.map(item => item.condition)
+    .filter((value, index, self) => self.indexOf(value) === index);
+    state.conditions.push('renewed');
+
+    // console.log(res.data);
+    console.log(state.conditions);
+
   };
 
   const orderProductsBy = (order) => {
