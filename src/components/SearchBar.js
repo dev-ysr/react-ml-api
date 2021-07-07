@@ -1,4 +1,3 @@
-import axios from "axios";
 import "./SearchBar.css";
 import { useContext } from "react";
 import ProductContext from "../context/Product/ProductContext";
