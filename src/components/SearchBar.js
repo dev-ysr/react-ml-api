@@ -16,7 +16,7 @@ function SearchBar() {
   };
 
   return (
-    <div className="container-search d-flex justify-content-center px-5">
+    <div className="container-search  my-3">
       <div className="search">
         <form onSubmit={searchProduct}>
           <input

@@ -2,7 +2,7 @@ import "./ProductCard.css";
 
 function ProductCard({nombre, precio, moneda, condicion, stock, imgSrc}) {
   return (
-    <div className="card col-12 col-sm-12 col-md-4">
+    <div className="card col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-danger text-white text-center">
       <img src={imgSrc} className="card-img-top" alt="..." />
       <div className="card-body">
         <h5 className="card-title">{nombre}</h5>
