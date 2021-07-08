@@ -1,7 +1,7 @@
 import {FILTER_PRODUCTS_BY_CONDITION, GET_PRODUCTS_BY_TERM} from '../types'
 import {ORDER_PRODUCTS_BY} from '../types'
 
-export default (state, action) => {
+const fn = (state, action) => {
     const {payload, type} = action;
 
      console.log(payload);
@@ -24,5 +24,9 @@ export default (state, action) => {
                 ...state,
                 filteredProducts: payload
             }
+        default:
+            return;
     }
 }
+
+export default fn;
