@@ -14,7 +14,7 @@ export const ProductState = (props) => {
 
   const getProductsByTerm = async (term) => {
     const res = await axios.get(
-      "http://localhost:4000/api/search?query=" + term
+      "https://api-ml-node.herokuapp.com/api/search?query=" + term
     );
 
     let conditions = res.data
