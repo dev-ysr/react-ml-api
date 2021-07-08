@@ -6,7 +6,7 @@ import { ProductState } from "./context/Product/ProductState";
 function App() {
   return (
     <ProductState>
-      <div className="container bg-dark">
+      <div className="container container-bg">
         <SearchBar></SearchBar>
         <Catalog></Catalog>
       </div>

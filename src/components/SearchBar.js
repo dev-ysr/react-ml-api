@@ -10,13 +10,10 @@ function SearchBar() {
 
     const term = document.querySelector("#search-input").value;
     getProductsByTerm(term);
-
-    // const res = await axios.get('http://localhost:4000/api/search?query='+term)
-    // console.log(res.data);
   };
 
   return (
-    <div className="container-search  my-3">
+    <div className="container-search my-3">
       <div className="search">
         <form onSubmit={searchProduct}>
           <input
